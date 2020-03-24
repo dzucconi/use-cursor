@@ -35,9 +35,11 @@ const App: React.FC = () => {
 
 ```typescript
 const useCursor: ({
-  max
+  max,
+  initialCursor
 }: {
   max: number;
+  initialCursor?: number | undefined;
 }) => {
   handlePrev: () => void;
   handleNext: () => void;
