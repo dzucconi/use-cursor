@@ -1,5 +1,7 @@
+import React, { useState } from "react";
 import { renderHook, act } from "@testing-library/react-hooks";
 import { useCursor } from "./useCursor";
+import { render, act as action } from "@testing-library/react";
 
 describe("useCursor", () => {
   it("initially returns `0`", () => {
@@ -88,5 +90,34 @@ describe("useCursor", () => {
 
     expect(result.current.cursor).toBe(-2);
     expect(result.current.index).toBe(8);
+  });
+
+  it("updates the `cursor` if the `initialCursor` changes", () => {
+    const Example = () => {
+      const [nextCursor, setNextCursor] = useState(99);
+      const { index, cursor } = useCursor({
+        max: 10,
+        initialCursor: nextCursor,
+      });
+      return (
+        <>
+          <button data-testid="button" onClick={() => setNextCursor(10)}>
+            click
+          </button>
+          <div data-testid="index">{index}</div>
+          <div data-testid="cursor">{cursor}</div>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<Example />);
+
+    expect(getByTestId("index").textContent).toBe("9");
+    expect(getByTestId("cursor").textContent).toBe("99");
+
+    action(() => getByTestId("button").click());
+
+    expect(getByTestId("index").textContent).toBe("0");
+    expect(getByTestId("cursor").textContent).toBe("10");
   });
 });
