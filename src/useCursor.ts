@@ -14,17 +14,13 @@ export const useCursor = ({
 
   const handlePrev = useCallback(() => setCursor((n) => n - 1), []);
   const handleNext = useCallback(() => setCursor((n) => n + 1), []);
-  const handleCursor = useCallback(
-    (nextCursor: number) => setCursor(nextCursor),
-    []
-  );
 
   const index = useMemo(() => mapCursorToMax(cursor, max), [cursor, max]);
 
   return {
     handlePrev,
     handleNext,
-    setCursor: handleCursor,
+    setCursor,
     cursor,
     index,
   };
