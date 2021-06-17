@@ -34,7 +34,7 @@
     "react-dom": "16.13.1",
     "react-test-renderer": "16.13.1",
     "semantic-release": "17.4.4",
-    "ts-jest": "25.2.1",
+    "ts-jest": "25.5.1",
     "typescript": "3.9.10"
   },
   "config": {
