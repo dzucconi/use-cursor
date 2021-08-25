@@ -33,7 +33,7 @@
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-test-renderer": "16.14.0",
-    "semantic-release": "17.4.6",
+    "semantic-release": "17.4.7",
     "ts-jest": "25.5.1",
     "typescript": "3.9.10"
   },
